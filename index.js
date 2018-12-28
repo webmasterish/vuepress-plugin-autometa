@@ -9,7 +9,7 @@ const _			= {
 
 // -----------------------------------------------------------------------------
 
-const REMOVE_MARKDOWN	= require('remove-markdown', { useImgAltText: false });
+const REMOVE_MARKDOWN	= require('remove-markdown');
 const STRIPTAGS				= require('striptags');
 
 // -----------------------------------------------------------------------------
@@ -184,7 +184,7 @@ PLUGIN.get_options = ( $page, plugin_options ) =>
 /**
  * @return {string}
  */
-PLUGIN.strip_markup = str => STRIPTAGS( REMOVE_MARKDOWN( str ) );
+PLUGIN.strip_markup = str => STRIPTAGS( REMOVE_MARKDOWN( str, { useImgAltText: false } ) );
 
 
 
