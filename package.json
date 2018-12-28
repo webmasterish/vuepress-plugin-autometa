@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Auto meta tags plugin for VuePress",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "version": "git add --all",
+    "postversion": "git push && git push --tags"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/webmasterish/vuepress-plugin-autometa.git"
