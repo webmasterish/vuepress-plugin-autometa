@@ -20,6 +20,8 @@
     "meta-tags",
     "social",
     "social-metas",
+    "page",
+    "post",
     "head"
   ],
   "author": {
