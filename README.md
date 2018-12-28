@@ -39,10 +39,10 @@ Add `vuepress-plugin-autometa` in your site or theme config file.
 // set your global autometa options - override in page frontmatter
 const autometa_options = {
   site: {
-		name		: 'Webmasterish',
-	  twitter	: 'webmasterish',
-	},
-	canonical_base: 'https://webmasterish.com',
+    name   : 'Webmasterish',
+    twitter: 'webmasterish',
+  },
+  canonical_base: 'https://webmasterish.com',
 };
 
 module.exports = {
