@@ -179,13 +179,13 @@ tags:
 
 # {{ $page.title }}
 
-![random image](http://lorempixel.com/640/480)
-
 
 ## Simplicity First
 
 Minimal setup with markdown-centered project structure 
 helps you focus on writing.
+
+![random image](http://lorempixel.com/640/480)
 
 
 ## Vue-Powered
