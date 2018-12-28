@@ -38,5 +38,10 @@
     "lodash.isempty": "4.4.0",
     "remove-markdown": "0.3.0",
     "striptags": "3.1.1"
-  }
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ]
 }
