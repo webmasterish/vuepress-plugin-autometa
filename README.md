@@ -172,7 +172,8 @@ autometa:
 
 tags:
   - VuePress
-  - Auto Meta Tags
+  - auto meta tags
+  - are cool
   
 ---
 

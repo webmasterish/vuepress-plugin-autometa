@@ -9,7 +9,7 @@ const _			= {
 
 // -----------------------------------------------------------------------------
 
-const REMOVE_MARKDOWN	= require('remove-markdown');
+const REMOVE_MARKDOWN	= require('remove-markdown', { useImgAltText: true });
 const STRIPTAGS				= require('striptags');
 
 // -----------------------------------------------------------------------------
