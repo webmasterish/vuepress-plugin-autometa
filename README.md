@@ -9,7 +9,7 @@
 ## What
 
 This is a Plug-and-Forget VuePress plugin that will auto generate the meta tags 
-of VuePress pages or posts.
+for VuePress pages or posts.
 
 
 ## Install
@@ -70,7 +70,7 @@ const default_options = {
   
   enable : true, // enables/disables everything - control per page using frontmatter
   image  : true, // regular meta image used by search engines
-  twitter: true,
+  twitter: true, // twitter card
   og     : true, // open graph: facebook, pinterest, google+
   schema : true, // schema.org for google
 

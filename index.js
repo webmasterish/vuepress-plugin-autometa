@@ -34,7 +34,7 @@ PLUGIN.get_options_defaults = () =>
 		
 		enable	: true, // enables/disables everything - control per page using frontmatter
 		image		: true, // regular meta image used by search engines
-		twitter	: true,
+		twitter	: true, // twitter card
 		og			: true, // open graph: facebook, pinterest, google+
 		schema	: true, // schema.org for google
 
@@ -192,6 +192,53 @@ PLUGIN.strip_markup = str => STRIPTAGS( REMOVE_MARKDOWN( str, { useImgAltText: f
  * @return {RegExp}
  */
 PLUGIN.get_regex = re => ( Array.isArray( re ) ) ? new RegExp( ...re ) : re;
+
+
+
+/**
+ * check if string is a valid url
+ * 
+ * @param {string} maybe_url
+ * @return {bool}
+ */
+PLUGIN.is_url = ( maybe_url ) =>
+{
+	
+	if ( ! maybe_url || typeof maybe_url !== 'string' )
+	{
+		return false;
+	}
+
+	// ---------------------------------------------------------------------------
+	
+	const re_protocol_and_domain = /^(?:\w+:)?\/\/(\S+)$/;
+
+	const match = maybe_url.match( re_protocol_and_domain );
+	
+	if ( ! match )
+	{
+		return false;
+	}
+
+	// ---------------------------------------------------------------------------
+
+	const all_after_protocol = match[1];
+	
+	if ( ! all_after_protocol )
+	{
+		return false;
+	}
+
+	// ---------------------------------------------------------------------------
+	
+	const re_domain_localhost			= /^localhost[\:?\d]*(?:[^\:?\d]\S*)?$/
+	const re_domain_non_localhost	= /^[^\s\.]+\.\S{2,}$/;
+
+	return ( 		re_domain_localhost.test( all_after_protocol )
+					 || re_domain_non_localhost.test( all_after_protocol ) );
+	
+}
+// PLUGIN.is_url()
 
 
 
@@ -427,7 +474,33 @@ PLUGIN.get_default_image_url = ( $page, options ) =>
 
 	// ---------------------------------------------------------------------------
 	
-	return out.trim();
+	out = out.trim();
+	
+	if ( ! out )
+	{
+		return;
+	}
+
+	// ---------------------------------------------------------------------------
+	
+	// support for image url as relative path
+	
+	if ( PLUGIN.is_url( out ) )
+	{
+		return out;
+	}
+	else
+	{
+		// only return it if we have a base url, 
+		// otherwise it's meaningless to add it
+		
+		if ( options.canonical_base )
+		{
+			out = PATH.join( options.canonical_base, out );
+			
+			return out;
+		}
+	}
 	
 };
 // PLUGIN.get_default_image_url()
