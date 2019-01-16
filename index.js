@@ -1,6 +1,6 @@
 'use strict';
 
-const PATH	= require('path');
+const URL		= require('url');
 const _			= {
 	defaultsDeep: require('lodash.defaultsdeep'),
 	findIndex		: require('lodash.findindex'),
@@ -53,7 +53,7 @@ PLUGIN.get_options_defaults = () =>
 		//
 		// having only started with vuepress a few days ago, 
 		// so far, i couldn't figure out a proper way to extend config head
-		// and add <link rel="canonical" href="path.join( canonical_base, $page.path )">
+		// and add <link rel="canonical" href="URL.resolve( canonical_base, $page.path )">
 
 		// -------------------------------------------------------------------------
 		
@@ -250,7 +250,7 @@ PLUGIN.get_canonical_url = ( $page, options ) =>
 	
 	if ( options.canonical_base && $page.path )
 	{
-		return PATH.join( options.canonical_base, $page.path );
+		return URL.resolve( options.canonical_base, $page.path );
 	}
 	
 };
@@ -496,7 +496,7 @@ PLUGIN.get_default_image_url = ( $page, options ) =>
 		
 		if ( options.canonical_base )
 		{
-			out = PATH.join( options.canonical_base, out );
+			out = URL.resolve( options.canonical_base, out );
 			
 			return out;
 		}
