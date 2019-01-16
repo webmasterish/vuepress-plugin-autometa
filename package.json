@@ -1,6 +1,6 @@
 {
   "name": "vuepress-plugin-autometa",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Auto meta tags plugin for VuePress",
   "main": "index.js",
   "scripts": {
