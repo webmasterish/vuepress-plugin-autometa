@@ -2,6 +2,7 @@
 
 > Auto meta tags plugin for [VuePress](https://vuepress.vuejs.org/) 1.x
 
+[![Build Status](https://img.shields.io/travis/webmasterish/vuepress-plugin-autometa/master.svg?style=flat-square)](https://travis-ci.org/webmasterish/vuepress-plugin-autometa)
 [![npm version](https://img.shields.io/npm/v/vuepress-plugin-autometa.svg?style=flat-square)](http://npm.im/vuepress-plugin-autometa)
 [![MIT License](https://img.shields.io/npm/l/express.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 
