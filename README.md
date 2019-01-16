@@ -91,7 +91,7 @@ const default_options = {
   //
   // having only started with vuepress a few days ago, 
   // so far, i couldn't figure out a proper way to extend config head
-  // and add <link rel="canonical" href="path.join( canonical_base, $page.path )">
+  // and add <link rel="canonical" href="URL.resolve( canonical_base, $page.path )">
   // feel free to tip-in
 
   // ---------------------------------------------------------------------------
