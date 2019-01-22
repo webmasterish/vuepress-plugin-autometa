@@ -10,7 +10,7 @@
 
 ## What
 
-This is a Plug-and-Forget VuePress plugin that will auto generate the meta tags 
+This is a Plug-and-Forget VuePress plugin that will auto generate the meta tags
 for VuePress pages or posts.
 
 
@@ -48,7 +48,9 @@ const autometa_options = {
 };
 
 module.exports = {
-  plugins: [ 'autometa', autometa_options ],
+  plugins: [
+    [ 'autometa', autometa_options ]
+  ]
 }
 ```
 
@@ -69,7 +71,7 @@ You can override default options in 2 ways:
 
 ```js
 const default_options = {
-  
+
   enable : true, // enables/disables everything - control per page using frontmatter
   image  : true, // regular meta image used by search engines
   twitter: true, // twitter card
@@ -77,61 +79,61 @@ const default_options = {
   schema : true, // schema.org for google
 
   // -------------------------------------------------------------------------
-  
+
   // canonical_base is the canonical url base - best to set once in config.js
   // if set it will be used to prepend page path and add it to the following:
   // - twitter:url
   // - og:url
   // - canonical link (not yet supported)
-  
+
   canonical_base: '',
-  
+
   // @todo
   //canonical_link: true,
   //
-  // having only started with vuepress a few days ago, 
+  // having only started with vuepress a few days ago,
   // so far, i couldn't figure out a proper way to extend config head
   // and add <link rel="canonical" href="URL.resolve( canonical_base, $page.path )">
   // feel free to tip-in
 
   // ---------------------------------------------------------------------------
-  
+
   author: {
     name   : '',
     twitter: '',
   },
 
   // ---------------------------------------------------------------------------
-  
+
   site: {
     name   : '',
     twitter: '',
   },
 
   // ---------------------------------------------------------------------------
-  
+
   // order of what gets the highest priority:
   //
   // 1. frontmatter
   // 2. page excerpt
   // 3. content markdown paragraph
   // 4. content regular html <p>
-  
+
   description_sources: [
-  
+
     'frontmatter',
     'excerpt',
-    
+
     // markdown paragraph regex
     //
     /^((?:(?!^#)(?!^\-|\+)(?!^[0-9]+\.)(?!^!\[.*?\]\((.*?)\))(?!^\[\[.*?\]\])(?!^\{\{.*?\}\})[^\n]|\n(?! *\n))+)(?:\n *)+\n/img,
     //
     // this excludes blockquotes using `(?!^>)`
     ///^((?:(?!^#)(?!^\-|\+)(?!^[0-9]+\.)(?!^!\[.*?\]\((.*?)\))(?!^>)(?!^\[\[.*?\]\])(?!^\{\{.*?\}\})[^\n]|\n(?! *\n))+)(?:\n *)+\n/img,
-    
+
     // html paragraph regex
     /<p(?:.*?)>(.*?)<\/p>/i,
-    
+
   ],
 
   // ---------------------------------------------------------------------------
@@ -141,16 +143,16 @@ const default_options = {
   // 1. frontmatter
   // 2. content markdown image such as `![alt text](http://url)`
   // 3. content regular html img
-  
+
   image_sources: [
-  
+
     'frontmatter',
-    
+
     /!\[.*?\]\((.*?)\)/i,        // markdown image regex
     /<img.*?src=['"](.*?)['"]/i, // html image regex
-    
+
   ],
-  
+
 };
 ```
 
@@ -176,7 +178,7 @@ tags:
   - VuePress
   - auto meta tags
   - are cool
-  
+
 ---
 
 # {{ $page.title }}
@@ -184,7 +186,7 @@ tags:
 
 ## Simplicity First
 
-Minimal setup with markdown-centered project structure 
+Minimal setup with markdown-centered project structure
 helps you focus on writing.
 
 ![random image](http://lorempixel.com/640/480)
@@ -192,13 +194,13 @@ helps you focus on writing.
 
 ## Vue-Powered
 
-Enjoy the dev experience of Vue + webpack, use Vue components in markdown, 
+Enjoy the dev experience of Vue + webpack, use Vue components in markdown,
 and develop custom themes with Vue.
 
 
 ## Performant
 
-VuePress generates pre-rendered static HTML for each page, 
+VuePress generates pre-rendered static HTML for each page,
 and runs as an SPA once a page is loaded.
 
 ```
