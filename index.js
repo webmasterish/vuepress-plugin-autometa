@@ -4,6 +4,8 @@ const _			= {
 	defaultsDeep: require('lodash.defaultsdeep'),
 	findIndex		: require('lodash.findindex'),
 	isEmpty			: require('lodash.isempty'),
+	trimStart: require('lodash.trimstart'),
+	trimEnd: require('lodash.trimend')
 };
 
 // -----------------------------------------------------------------------------
@@ -23,8 +25,8 @@ const PLUGIN = {
 
 // -----------------------------------------------------------------------------
 
-const resolveURL = (base, path) =>
-	(base.endsWith('/') ? base.slice(0, -1) : base) + path;
+const resolveURL = ( base, path ) =>
+	`${_.trimEnd( base, '/' )}/${_.trimStart( path, '/' )}`
 
 /**
  * @return {object}
