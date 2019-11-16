@@ -1,10 +1,11 @@
 'use strict';
 
-const URL		= require('url');
 const _			= {
 	defaultsDeep: require('lodash.defaultsdeep'),
 	findIndex		: require('lodash.findindex'),
 	isEmpty			: require('lodash.isempty'),
+	trimStart: require('lodash.trimstart'),
+	trimEnd: require('lodash.trimend')
 };
 
 // -----------------------------------------------------------------------------
@@ -23,6 +24,9 @@ const PLUGIN = {
 };
 
 // -----------------------------------------------------------------------------
+
+const resolveURL = ( base, path ) =>
+	`${_.trimEnd( base, '/' )}/${_.trimStart( path, '/' )}`
 
 /**
  * @return {object}
@@ -53,7 +57,7 @@ PLUGIN.get_options_defaults = () =>
 		//
 		// having only started with vuepress a few days ago, 
 		// so far, i couldn't figure out a proper way to extend config head
-		// and add <link rel="canonical" href="URL.resolve( canonical_base, $page.path )">
+		// and add <link rel="canonical" href="resolveURL( canonical_base, $page.path )">
 
 		// -------------------------------------------------------------------------
 		
@@ -240,8 +244,6 @@ PLUGIN.is_url = ( maybe_url ) =>
 }
 // PLUGIN.is_url()
 
-
-
 /**
  * @return {string}
  */
@@ -250,7 +252,7 @@ PLUGIN.get_canonical_url = ( $page, options ) =>
 	
 	if ( options.canonical_base && $page.path )
 	{
-		return URL.resolve( options.canonical_base, $page.path );
+		return resolveURL( options.canonical_base, $page.path );
 	}
 	
 };
@@ -496,7 +498,7 @@ PLUGIN.get_default_image_url = ( $page, options ) =>
 		
 		if ( options.canonical_base )
 		{
-			out = URL.resolve( options.canonical_base, out );
+			out = resolveURL( options.canonical_base, out );
 			
 			return out;
 		}
