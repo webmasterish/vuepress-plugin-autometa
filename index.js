@@ -248,8 +248,14 @@ PLUGIN.is_url = ( maybe_url ) =>
  * @return {string}
  */
 PLUGIN.get_canonical_url = ( $page, options ) =>
-{
+{	
 	
+	// resolving permalinks
+	if ( options.canonical_base && $page.frontmatter.permalink) {
+		return resolveURL(options.canonical_base, $page.frontmatter.permalink)
+	}
+	
+	// use default path
 	if ( options.canonical_base && $page.path )
 	{
 		return resolveURL( options.canonical_base, $page.path );
