@@ -45,6 +45,8 @@ const autometa_options = {
     twitter: 'webmasterish',
   },
   canonical_base: 'https://webmasterish.com',
+
+  default_img: '/landing.jpg'
 };
 
 module.exports = {
@@ -143,6 +145,7 @@ const default_options = {
   // 1. frontmatter
   // 2. content markdown image such as `![alt text](http://url)`
   // 3. content regular html img
+  // 4. fallback image defined with  `default_img`
 
   image_sources: [
 
@@ -150,6 +153,8 @@ const default_options = {
 
     /!\[.*?\]\((.*?)\)/i,        // markdown image regex
     /<img.*?src=['"](.*?)['"]/i, // html image regex
+
+    'default'
 
   ],
 
